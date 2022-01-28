@@ -1,0 +1,12 @@
+.hero {
+    padding: 20px 35px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+   
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: 80%;
+    background-image: url("https://vinepair.com/wp-content/uploads/2017/05/sommelier-int.jpg");
+};

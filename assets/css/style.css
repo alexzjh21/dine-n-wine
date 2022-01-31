@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    color: cornsilk;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -14,11 +13,9 @@
 
 #recipe-holder {
     margin: 30px;
-    background-color: #ffffff;
+    background-color: rgba(255,255,255,0.6);
     border: 1px solid black;
-    opacity: 0.6;
     color: black;
-
 }
 
 #dine-n-wine {

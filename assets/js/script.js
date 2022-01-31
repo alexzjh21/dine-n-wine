@@ -1,17 +1,21 @@
-var randomEl = document.querySelector();
-var generate = document.addEventListener(click, randomMeal);
-var randomMeal = function() {
+var recipeTitleEl = document.querySelector("#recipe-title");
+var ingredientsEl = document.querySelector("#ingredients");
+var instructionsEl = document.querySelector("#instructions");
 
-}
 
-// fetch random meal api
-fetch("www.themealdb.com/api/json/v1/1/random.php")
-    .then(function(response) {
-        if(response.ok) {
-            console.log(response);
-            response.json()
-                .then(function(data) {
-                    console.log(data);
-                });
-        }
+var getRandomRecipe = function() {
+    var apiUrl = "https://www.themealdb.com/api/json/v1/1/random.php"
+
+    fetch(apiUrl).then(function(response){
+        response.json().then(function(data){
+            console.log(data);
+            recipeTitleEl.innerHTML = data.meals[0].strMeal;
+            instructionsEl.innerHTML = "Instructions: <br> " + data.meals[0].strInstructions;
+            ingredientsEl
+
+        });
     });
+
+};
+
+getRandomRecipe();

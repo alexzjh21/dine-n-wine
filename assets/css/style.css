@@ -1,5 +1,6 @@
 .hero {
     padding: 20px 35px;
+    margin: 10px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -24,4 +25,7 @@
     background-color: #24454B;
     color: cornsilk;
     text-align: center;
+    padding: 10px;
+    margin-bottom: 7px;
 }
+

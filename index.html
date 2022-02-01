@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Dine'n'Wine</title>
 </head>
@@ -14,7 +15,7 @@
     </header>
 
     <section id="button-holder">
-        <button id="random-btn">Random Recipe</button>
+        <button class="pure-button pure-button-active" id="random-btn">Random Recipe</button>
     </section>
 
 
@@ -26,6 +27,31 @@
             <p id="instructions">Instructions</p>
             
         </div>
+    </section>
+    <section id="nutrition">
+        <form class="pure-form pure-form-stacked">
+            <fieldset >
+                <legend>Nutririon Information by Ingredient</legend>
+                <label for="stacked-ingredient"></label>
+                <input type="text" id="stacked-ingredient" placeholder="Ingredient" />
+                <span class="pure-form-message">This is a required field.</span>
+                <label for="stacked-measure">Measure</label>
+                <input type="number" id="stacked-measure" placeholder="measure" />
+                <label for="stacked-unit">Unit</label>
+                <select id="stacked-state">
+                    <option>tsp</option>
+                    <option>tbsp</option>
+                    <option>cup</option>
+                    <option>oz</option>
+                    <option></option>
+                    <option>g</option>
+                    <option>ml</option>    
+                </select>
+                <span class="pure-form-message">Use blank for whole items, like a fruit or vegetable</span>
+                <button type="submit" class="pure-button pure-button-primary">Find Nutrional Facts</button>
+            </fieldset>
+        </form>
+        
     </section>
 
 

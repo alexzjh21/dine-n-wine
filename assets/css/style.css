@@ -13,7 +13,7 @@
 
 #recipe-holder {
     margin: 30px;
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255,255,255,0.8);
     border: 1px solid black;
     color: black;
 }
@@ -24,5 +24,9 @@
     text-align: center;
     padding: 10px;
     margin-bottom: 7px;
+}
+
+#button-holder, #nutrition {
+    margin: 10px;
 }
 

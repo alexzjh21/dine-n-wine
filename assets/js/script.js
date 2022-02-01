@@ -3,6 +3,9 @@ var ingredientsEl = document.querySelector("#ingredients");
 var instructionsEl = document.querySelector("#instructions");
 var randomRecipeBtnEl = document.querySelector("#random-btn");
 var mealImgEl = document.querySelector("#meal-img");
+var nutritionFactsEl = document.querySelector("#nutrition-facts");
+
+
 
 
 var getRandomRecipe = function() {

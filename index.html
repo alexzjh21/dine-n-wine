@@ -4,22 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Dine'n'Wine</title>
 </head>
 <body>
-
-    <header>
-        <h1>
-        <a href="/">Dine'n'Wine!</a>
-        </h1>
-    
-   
+    <header id="dine-n-wine">
+        <h1>Dine'n'Wine!</h1>
+        <p id="explainer">Find a recipe randomly, and see what it should look like</p>
     </header>
 
-    <section class="hero">
-        
-        
+    <section id="button-holder">
+        <button id="random-btn">Random Recipe</button>
+    </section>
+
+
+    <section id="main" class="hero">
+        <div id=recipe-holder>
+            <h2 id="recipe-title">Recipe</h2>
+            <img id="meal-img" />
+            <p id="ingredients">Ingridents</p>
+            <p id="instructions">Instructions</p>
+            
+        </div>
     </section>
 
 

@@ -1,12 +1,28 @@
 .hero {
     padding: 20px 35px;
+    margin: 10px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-   
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-position: 80%;
     background-image: url("https://vinepair.com/wp-content/uploads/2017/05/sommelier-int.jpg");
-};
+}
+
+#recipe-holder {
+    margin: 30px;
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid black;
+    color: black;
+}
+
+#dine-n-wine {
+    background-color: #24454B;
+    color: cornsilk;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 7px;
+}
+

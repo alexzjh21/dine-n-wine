@@ -1,12 +1,57 @@
-.hero {
-    padding: 20px 35px;
+header {
+    background: linear-gradient(to bottom right, red, #6D0000);
+    padding: 25px;
+    width: 100%;
+    
+}
+
+/* .container {
+    padding: 0px;
+} */
+
+.header-section {
+    padding: 0px;
+    width: 100;
+    margin: 100;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.header-title-box {
+    padding: 20px;
+}
+
+
+.header-title {
    
+    text-align: left;
+    color: white;
+    font-size: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.header-font {
+    color: rgb(234, 216, 216);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+
+.header-fillout {
+    margin: 10px auto;
+    color: rgb(234, 216, 216);
+}
+
+.form-group {
+    width: 200%;
+}
+
+.hero {
+    height: 800px;
+    width: 50%;
+    margin-bottom: 25px;
+    background-image: url("./assets/background/food-and-wine-bg.jpeg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    background-position: 80%;
-    background-image: url("https://vinepair.com/wp-content/uploads/2017/05/sommelier-int.jpg");
 };

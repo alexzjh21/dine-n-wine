@@ -13,23 +13,56 @@
 
 #recipe-holder {
     margin: 30px;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgb(195, 120, 120, 0.8);
     border: 1px solid black;
-    color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+
+    
+
 }
 
 #dine-n-wine {
-    background-color: #24454B;
-    color: cornsilk;
     text-align: center;
-    padding: 10px;
+    padding: 25px;
     margin-bottom: 7px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(234, 216, 216);
+}
+
+header {
+    background: linear-gradient(to bottom right, red, #6D0000);
+    padding: 25px;
+    width: 100%;
+    
 }
 
 #button-holder, #nutrition {
     margin: 10px;
 }
 
+
 #sub-cat {
     font-size: smaller;
 }
+
+.buttons-for-recipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px;
+    
+}
+
+.pure-button {
+    border-radius: 20px;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(195, 120, 120);
+    color: rgb(234, 216, 216);
+
+}
+
+
+

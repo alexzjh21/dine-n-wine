@@ -4,26 +4,92 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Dine'n'Wine</title>
 </head>
 <body>
-
-    <header>
-        <h1>
-        <a href="/">Dine'n'Wine!</a>
-        </h1>
-    
-   
+    <header id="dine-n-wine">
+        <h1>Dine'n'Wine!</h1>
+        <p id="explainer">Find a recipe randomly, and see what it should look like</p>
     </header>
 
-    <section class="hero">
-        
+    <section class="buttons-for-recipes" id="button-holder">
+     
+            <button class="pure-button pure-button-active" id="random-btn">Random Recipe</button>
+
+            <button class="pure-button pure-button-active" id="save-btn">Save Recipe</button>
+
+    </section>
+
+
+    <section id="main" class="hero">
+        <div id=recipe-holder>
+            <h2 id="recipe-title">Recipe</h2>
+            <img id="meal-img" />
+            <p id="ingredients">Ingridents</p>
+            <p id="instructions">Instructions</p>
+            
+        </div>
+    </section>
+    <section id="nutrition">
+        <form class="pure-form pure-form-stacked">
+            <fieldset >
+                <legend>Nutririon Information by Ingredient</legend>
+                <label for="stacked-ingredient"></label>
+                <input type="text" id="stacked-ingredient" placeholder="Ingredient" />
+                <span class="pure-form-message">This is a required field.</span>
+                <label for="stacked-measure">Measure</label>
+                <input type="number" id="stacked-measure" placeholder="measure" />
+                <label for="stacked-unit">Unit</label>
+                <select id="stacked-unit">
+                    <option>tsp</option>
+                    <option>tbsp</option>
+                    <option>cup</option>
+                    <option>oz</option>
+                    <option></option>
+                    <option>g</option>
+                    <option>ml</option>   
+                    <option>lb</option> 
+                </select>
+                <span class="pure-form-message">Use blank for whole items, like a fruit, vegetable, or cut of meat</span>
+                <button type="submit" id="nutrition-btn" class="pure-button pure-button-primary">Find Nutrional Facts</button>
+            </fieldset>
+        </form>
+        <div id="nutrition-holder">
+            <table class="pure-table pure-table-horizontal">
+                <thead>
+                    <tr>
+                        <th>Calories</th>
+                        <th id="calories-display"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fat</td>
+                        <td id="fat-display"></td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrates</td>
+                        <td id="carb-display"></td>
+                    </tr>
+                    <tr id="sub-cat">
+                        <td>Sugar</td>
+                        <td id="sugar-display"></td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td id="protein-display"></td>
+                    </tr>
+                </tbody>
+            </table>
+           
+        </div>
     </section>
 
 
 
 
-
+<script src="./assets/js/script.js"></script>
 </body>
 </html>

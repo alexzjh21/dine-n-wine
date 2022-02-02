@@ -42,6 +42,11 @@ header {
     margin: 10px;
 }
 
+
+#sub-cat {
+    font-size: smaller;
+}
+
 .buttons-for-recipes {
     display: flex;
     flex-wrap: wrap;

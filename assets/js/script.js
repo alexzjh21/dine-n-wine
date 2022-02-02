@@ -4,6 +4,17 @@ var instructionsEl = document.querySelector("#instructions");
 var randomRecipeBtnEl = document.querySelector("#random-btn");
 var mealImgEl = document.querySelector("#meal-img");
 var nutritionFactsEl = document.querySelector("#nutrition-facts");
+var formIngredientEl = document.querySelector("#stacked-ingredient");
+var formMeasureEl = document.querySelector("#stacked-measure");
+var formUnitEl = document.querySelector("#stacked-unit");
+var nutritionButtonEl = document.querySelector("#nutrition-btn");
+var calorieEl = document.querySelector("#calories-display");
+var fatEl = document.querySelector("#fat-display");
+var carbEl = document.querySelector("#carb-display");
+var sugarEl = document.querySelector("#sugar-display");
+var proteinEl = document.querySelector("#protein-display")
+
+
 
 
 
@@ -26,13 +37,40 @@ var getRandomRecipe = function() {
 
 };
 
-var randomBtnHandler = function () {
+var randomBtnHandler = function (event) {
     recipeTitleEl.innerHTML = "";
     ingredientsEl.innerHTML = "";
     instructionsEl.innerHTML = "";
     getRandomRecipe();
 }
 
+var getNutritionFacts = function(event) {
+    event.preventDefault();
+    // define var's for the form inputs using formEl.value.trim()
+    var unit = formUnitEl.value;
+    var measure = formMeasureEl.value;
+    var ingredient = formIngredientEl.value.trim();
+
+   // console.log(measure, unit, ingredient);
+
+    // set apiUrl
+    var apiUrl = "https://api.edamam.com/api/nutrition-data?app_id=473c3718&app_key=e09fdcbb8cd2aea6a1be56f7812d7c2f&nutrition-type=cooking&ingr=" + measure + "%20" + unit + "%20" + ingredient
+
+    // fetch call using form var and apiUrl
+    fetch(apiUrl).then(function(response){
+        response.json().then(function(data){
+            console.log(data);
+            calorieEl.innerHTML = data.calories;
+            fatEl.innerHTML = data.totalNutrients.FAT.quantity + data.totalNutrients.FAT.unit;
+            carbEl.innerHTML = data.totalNutrients.CHOCDF.quantity + data.totalNutrients.CHOCDF.unit;
+            sugarEl.innerHTML = data.totalNutrients.SUGAR.quantity + data.totalNutrients.SUGAR.unit;
+            proteinEl.innerHTML = data.totalNutrients.PROCNT.quantity + data.totalNutrients.PROCNT.unit;
+
+        })
+    })
+}
+
 
 
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
+nutritionButtonEl.addEventListener("click", getNutritionFacts )

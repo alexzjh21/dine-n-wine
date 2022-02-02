@@ -38,20 +38,49 @@
                 <label for="stacked-measure">Measure</label>
                 <input type="number" id="stacked-measure" placeholder="measure" />
                 <label for="stacked-unit">Unit</label>
-                <select id="stacked-state">
+                <select id="stacked-unit">
                     <option>tsp</option>
                     <option>tbsp</option>
                     <option>cup</option>
                     <option>oz</option>
                     <option></option>
                     <option>g</option>
-                    <option>ml</option>    
+                    <option>ml</option>   
+                    <option>lb</option> 
                 </select>
-                <span class="pure-form-message">Use blank for whole items, like a fruit or vegetable</span>
-                <button type="submit" class="pure-button pure-button-primary">Find Nutrional Facts</button>
+                <span class="pure-form-message">Use blank for whole items, like a fruit, vegetable, or cut of meat</span>
+                <button type="submit" id="nutrition-btn" class="pure-button pure-button-primary">Find Nutrional Facts</button>
             </fieldset>
         </form>
-        
+        <div id="nutrition-holder">
+            <table class="pure-table pure-table-horizontal">
+                <thead>
+                    <tr>
+                        <th>Calories</th>
+                        <th id="calories-display"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fat</td>
+                        <td id="fat-display"></td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrates</td>
+                        <td id="carb-display"></td>
+                    </tr>
+                    <tr id="sub-cat">
+                        <td>Sugar</td>
+                        <td id="sugar-display"></td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td id="protein-display"></td>
+                    </tr>
+                </tbody>
+            </table>
+           
+        </div>
     </section>
 
 

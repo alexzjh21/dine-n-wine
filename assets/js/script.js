@@ -13,6 +13,8 @@ var fatEl = document.querySelector("#fat-display");
 var carbEl = document.querySelector("#carb-display");
 var sugarEl = document.querySelector("#sugar-display");
 var proteinEl = document.querySelector("#protein-display")
+var  saveBtnEl = document.querySelector("#save-btn");
+var favoriteRecipes = [];
 
 
 
@@ -52,6 +54,19 @@ var randomBtnHandler = function (event) {
     instructionsEl.innerHTML = "";
     getRandomRecipe();
 }
+//load recipe will display
+
+// save recipe funtion sets array to local storage
+
+var favRecipe = function (event) {
+    // get recipe name, ingredients and instructions
+    var recipeObj = {
+        mealName: 
+    }
+    // push into favoriteRecipe array
+
+    // call save recipe
+}
 
 var getNutritionFacts = function(event) {
     event.preventDefault();
@@ -80,6 +95,6 @@ var getNutritionFacts = function(event) {
 }
 
 
-
+saveBtnEl.addEventListener("click", favRecipe);
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
-nutritionButtonEl.addEventListener("click", getNutritionFacts )
+nutritionButtonEl.addEventListener("click", getNutritionFacts );

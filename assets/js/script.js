@@ -15,6 +15,9 @@ var sugarEl = document.querySelector("#sugar-display");
 var proteinEl = document.querySelector("#protein-display")
 var filterBtnEl = document.querySelector("#filter-btn");
 var dropdownEl = document.querySelector("#dropdown")
+var dropdownPEl = document.querySelectorAll('#dropdown p')
+var catHolder = document.querySelector('#category-holder')
+
 
 
 
@@ -47,34 +50,38 @@ var getRandomRecipe = function() {
 
 };
 
+// filter the recipes based on the 14 categories
 function filterByCat() {
-    dropdownEl.classList.remove("hide");
 
-    var categoryApi = 'https://www.themealdb.com/api/json/v1/1/categories.php'
-
-    fetch(categoryApi)
+    var category = this.innerText
+    var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category
+    console.log(filterApi)
+        
+    fetch(filterApi)
     .then(function(res){
         return res.json()
     })
     .then(function(data){
         console.log(data)
+        var categoryCard = ""
+        // shows all the recipies when clicking on the categories
+        for(let i = 0; i < data.meals.length; i++) {
+            categoryCard += `<div class="category-cards">
+            <h2 id="category-name">${data.meals[i].strMeal}</h2>
+            <p id="category-recipe"></p>
+            </div>`
 
-        const category = data.categories;
-
-        for(let i = 0; i < category.length; i++){
-            console.log(category[i].strCategory)
-
-            var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category[i].strCategory
+            // refactor for loop to dynamically create element using document.createElement
+            // add attributes
+            // add event listener
         }
-
-        fetch(filterApi)
-        .then(function(res){
-            return res.json()
-        })
-        .then(function(data){
-            console.log(data)
-        })
+            catHolder.innerHTML = categoryCard
+            // show the cards for all the recipes in that category
+            catHolder.classList.remove('hide')
     })
+
+    // seperate function call www.themealdb.com/api/json/v1/1/lookup.php?i=(id) using event listener(line:91)
+
 };
 
 var randomBtnHandler = function (event) {
@@ -110,8 +117,17 @@ var getNutritionFacts = function(event) {
     })
 }
 
+// show dropdown menu when click the filter by category button
+function showDropdown() {
+    dropdownEl.classList.remove("hide");
+}
+
+// calls the filter by category function when click on one of the categories
+dropdownPEl.forEach(function(el){
+    el.addEventListener("click", filterByCat);
+})
 
 
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
 nutritionButtonEl.addEventListener("click", getNutritionFacts);
-filterBtnEl.addEventListener("click", filterByCat);
+filterBtnEl.addEventListener("click", showDropdown);

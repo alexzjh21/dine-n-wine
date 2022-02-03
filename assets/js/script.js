@@ -1,10 +1,9 @@
-var randomEl = document.querySelector("#randomBtn");
-var generate = randomEl.addEventListener(click, randomMeal);
+//var randomButton = document.querySelector("#randomBtn").addEventListener('click', randomMeal);
 var listEl = document.createElement("ol");
 
 var randomMeal = function() {
     // fetch random meal api
-    fetch("www.themealdb.com/api/json/v1/1/random.php")
+    fetch("http://www.themealdb.com/api/json/v1/1/random.php")
         .then(function(response) {
             if(response.ok) {
                 console.log("response", response);
@@ -30,3 +29,7 @@ var randomMeal = function() {
          } 
     }
 }
+var randomButton = document.querySelector("#randomBtn").addEventListener('click', randomMeal);
+// look up by first letter
+
+//var firstEl = document.querySelector("#firstBtn").addEventListener('click', charList);

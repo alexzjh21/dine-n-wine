@@ -13,7 +13,11 @@ var fatEl = document.querySelector("#fat-display");
 var carbEl = document.querySelector("#carb-display");
 var sugarEl = document.querySelector("#sugar-display");
 var proteinEl = document.querySelector("#protein-display")
-
+var filterBtnEl = document.querySelector("#filter-btn");
+var categoryHolder = document.querySelector("#category-holder");
+var categoryName = document.querySelector("#category-name");
+var categoryImg = document.querySelector("#category-img");
+var cardsEl = document.querySelector(".category-cards")
 
 
 
@@ -44,6 +48,27 @@ var getRandomRecipe = function() {
         });
     });
 
+};
+
+function filterByCat() {
+    var categoryApi = 'https://www.themealdb.com/api/json/v1/1/categories.php'
+
+    fetch(categoryApi)
+    .then(function(res){
+        return res.json()
+    })
+    .then(function(data){
+        console.log(data)
+        categoryHolder.removeAttribute("class");
+
+        const category = data.categories;
+
+        for(let i = 0; i < category.length; i++){
+            console.log(category[i].strCategory)
+
+            categoryName.innerHTML += category[i].strCategory + "<br>";
+        }
+    })
 };
 
 var randomBtnHandler = function (event) {
@@ -82,4 +107,5 @@ var getNutritionFacts = function(event) {
 
 
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
-nutritionButtonEl.addEventListener("click", getNutritionFacts )
+nutritionButtonEl.addEventListener("click", getNutritionFacts);
+filterBtnEl.addEventListener("click", filterByCat);

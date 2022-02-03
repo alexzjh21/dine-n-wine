@@ -11,6 +11,18 @@
     background-image: url("https://vinepair.com/wp-content/uploads/2017/05/sommelier-int.jpg");
 }
 
+.hide {
+    display: none;
+}
+
+.category-cards {
+    color: white;
+    background-color: rgb(195, 120, 120, 0.8);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
 #recipe-holder {
     margin: 30px;
     background-color: rgb(195, 120, 120, 0.8);

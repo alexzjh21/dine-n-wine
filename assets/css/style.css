@@ -11,9 +11,6 @@
     background-image: url("https://vinepair.com/wp-content/uploads/2017/05/sommelier-int.jpg");
 }
 
-.hide {
-    display: none;
-}
 
 .category-cards {
     color: white;
@@ -30,9 +27,9 @@
     color: white;
     padding: 20px;
     border-radius: 10px;
-
     
-
+    
+    
 }
 
 #dine-n-wine {
@@ -73,8 +70,26 @@ header {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: rgb(195, 120, 120);
     color: rgb(234, 216, 216);
-
+    
 }
 
 
+.dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 12%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
 
+.dropdown-content p {
+    color: black;
+    padding: 0 10px;
+    text-decoration: none;
+    display: block;
+}
+
+
+.hide {
+    display: none;
+}

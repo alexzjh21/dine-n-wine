@@ -14,10 +14,7 @@ var carbEl = document.querySelector("#carb-display");
 var sugarEl = document.querySelector("#sugar-display");
 var proteinEl = document.querySelector("#protein-display")
 var filterBtnEl = document.querySelector("#filter-btn");
-var categoryHolder = document.querySelector("#category-holder");
-var categoryName = document.querySelector("#category-name");
-var categoryImg = document.querySelector("#category-img");
-var cardsEl = document.querySelector(".category-cards")
+var dropdownEl = document.querySelector("#dropdown")
 
 
 
@@ -51,6 +48,8 @@ var getRandomRecipe = function() {
 };
 
 function filterByCat() {
+    dropdownEl.classList.remove("hide");
+
     var categoryApi = 'https://www.themealdb.com/api/json/v1/1/categories.php'
 
     fetch(categoryApi)
@@ -59,15 +58,22 @@ function filterByCat() {
     })
     .then(function(data){
         console.log(data)
-        categoryHolder.removeAttribute("class");
 
         const category = data.categories;
 
         for(let i = 0; i < category.length; i++){
             console.log(category[i].strCategory)
 
-            categoryName.innerHTML += category[i].strCategory + "<br>";
+            var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category[i].strCategory
         }
+
+        fetch(filterApi)
+        .then(function(res){
+            return res.json()
+        })
+        .then(function(data){
+            console.log(data)
+        })
     })
 };
 

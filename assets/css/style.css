@@ -8,8 +8,9 @@
     background-position: center;
     background-attachment: fixed;
     background-position: 80%;
-    background-image: url("../background/food-and-wine-bg.jpeg");
+    background-image: url('../background/food-and-wine-bg.jpeg');
 }
+
 
 #recipe-holder {
     margin: 30px;

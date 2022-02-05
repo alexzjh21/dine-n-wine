@@ -13,6 +13,9 @@ var fatEl = document.querySelector("#fat-display");
 var carbEl = document.querySelector("#carb-display");
 var sugarEl = document.querySelector("#sugar-display");
 var proteinEl = document.querySelector("#protein-display")
+var  saveBtnEl = document.querySelector("#save-btn");
+var favoriteRecipes = [];
+var measureWarningEl = document.querySelector("#neg-measure-warning");
 
 
 
@@ -52,6 +55,19 @@ var randomBtnHandler = function (event) {
     instructionsEl.innerHTML = "";
     getRandomRecipe();
 }
+//load recipe will display
+
+// save recipe funtion sets array to local storage
+
+// var favRecipe = function (event) {
+//     // get recipe name, ingredients and instructions
+//     var recipeObj = {
+//         mealName: 
+//     }
+//     // push into favoriteRecipe array
+
+//     // call save recipe
+// }
 
 var getNutritionFacts = function(event) {
     event.preventDefault();
@@ -64,22 +80,28 @@ var getNutritionFacts = function(event) {
 
     // set apiUrl
     var apiUrl = "https://api.edamam.com/api/nutrition-data?app_id=473c3718&app_key=e09fdcbb8cd2aea6a1be56f7812d7c2f&nutrition-type=cooking&ingr=" + measure + "%20" + unit + "%20" + ingredient
+    if (measure < 0) {
+        measureWarningEl.innerHTML = ("Please enter a value greater than 0. Decimals are accepted");
+        return
+    } else {
+        measureWarningEl.innerHTML = ""
 
     // fetch call using form var and apiUrl
-    fetch(apiUrl).then(function(response){
-        response.json().then(function(data){
-            console.log(data);
-            calorieEl.innerHTML = data.calories;
-            fatEl.innerHTML = data.totalNutrients.FAT.quantity + data.totalNutrients.FAT.unit;
-            carbEl.innerHTML = data.totalNutrients.CHOCDF.quantity + data.totalNutrients.CHOCDF.unit;
-            sugarEl.innerHTML = data.totalNutrients.SUGAR.quantity + data.totalNutrients.SUGAR.unit;
-            proteinEl.innerHTML = data.totalNutrients.PROCNT.quantity + data.totalNutrients.PROCNT.unit;
+        fetch(apiUrl).then(function(response){
+            response.json().then(function(data){
+                console.log(data);
+                calorieEl.innerHTML = data.calories;
+                fatEl.innerHTML = data.totalNutrients.FAT.quantity + data.totalNutrients.FAT.unit;
+                carbEl.innerHTML = data.totalNutrients.CHOCDF.quantity + data.totalNutrients.CHOCDF.unit;
+                sugarEl.innerHTML = data.totalNutrients.SUGAR.quantity + data.totalNutrients.SUGAR.unit;
+                proteinEl.innerHTML = data.totalNutrients.PROCNT.quantity + data.totalNutrients.PROCNT.unit;
 
+             })
         })
-    })
+    }   
 }
 
 
-
+//saveBtnEl.addEventListener("click", favRecipe);
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
-nutritionButtonEl.addEventListener("click", getNutritionFacts )
+nutritionButtonEl.addEventListener("click", getNutritionFacts );

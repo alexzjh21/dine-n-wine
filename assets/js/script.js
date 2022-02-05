@@ -15,8 +15,8 @@ var sugarEl = document.querySelector("#sugar-display");
 var proteinEl = document.querySelector("#protein-display")
 var filterBtnEl = document.querySelector("#filter-btn");
 var dropdownEl = document.querySelector("#dropdown")
-var dropdownPEl = document.querySelectorAll('#dropdown p')
 var catHolder = document.querySelector('#category-holder')
+var recipeDropdown = document.querySelectorAll(".pure-menu-children")
 
 
 
@@ -55,7 +55,7 @@ function filterByCat() {
 
     var category = this.innerText
     var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category
-    console.log(filterApi)
+    //console.log(filterApi)
         
     fetch(filterApi)
     .then(function(res){
@@ -63,24 +63,42 @@ function filterByCat() {
     })
     .then(function(data){
         console.log(data)
-        var categoryCard = ""
-        // shows all the recipies when clicking on the categories
+        
         for(let i = 0; i < data.meals.length; i++) {
-            categoryCard += `<div class="category-cards">
-            <h2 id="category-name">${data.meals[i].strMeal}</h2>
-            <p id="category-recipe"></p>
-            </div>`
+            var recipeName = ""
+            recipeName += data.meals[i].strMeal
 
-            // refactor for loop to dynamically create element using document.createElement
-            // add attributes
-            // add event listener
+            const listEl = document.createElement('li')
+            listEl.setAttribute("class", "pure-menu-item")
+            const recipeAEl = document.createElement('a')
+            recipeAEl.setAttribute("class", "pure-menu-link")
+            recipeAEl.textContent = recipeName
+           
+            listEl.append(recipeAEl)
+            recipeDropdown.append(listEl)
         }
-            catHolder.innerHTML = categoryCard
-            // show the cards for all the recipes in that category
-            catHolder.classList.remove('hide')
+
+        // recipeDrop.classList.remove('hide')
+
+        // var categoryCard = ""
+        // // shows all the recipies when clicking on the categories
+        // for(let i = 0; i < data.meals.length; i++) {
+        //     categoryCard += `<div class="category-cards">
+        //     <h2 id="category-name">${data.meals[i].strMeal}</h2>
+        //     <p id="category-recipe"></p>
+        //     </div>`
+
+        //     // refactor for loop to dynamically create element using document.createElement
+        //     // add attributes
+        //     // add event listener
+        // }
+        // catHolder.innerHTML = categoryCard
+        // // show the cards for all the recipes in that category
+        // catHolder.classList.remove('hide')
     })
 
-    // seperate function call www.themealdb.com/api/json/v1/1/lookup.php?i=(id) using event listener(line:91)
+
+    // seperate function call 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId
 
 };
 
@@ -122,10 +140,6 @@ function showDropdown() {
     dropdownEl.classList.remove("hide");
 }
 
-// calls the filter by category function when click on one of the categories
-dropdownPEl.forEach(function(el){
-    el.addEventListener("click", filterByCat);
-})
 
 
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);

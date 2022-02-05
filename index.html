@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Dine'n'Wine</title>
 </head>
@@ -23,24 +24,87 @@
         <div>
             <button class="pure-button" id="filter-btn">Filter by Category</button>
             <div class="dropdown-content hide" id="dropdown">
-                <p>Beef</p>
-                <p>Chicken</p>
-                <p>Dessert</p>
-                <p>Goat</p>
-                <p>Lamb</p>
-                <p>Miscellaneous</p>
-                <p>Pasta</p>
-                <p>Pork</p>
-                <p>Seafood</p>
-                <p>Side</p>
-                <p>Starter</p>
-                <p>Vegan</p>
-                <p>Vegetarian</p>
-                <p>Breakfast</p>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Beef</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Chicken</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Dessert</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Goat</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Lamb</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Miscellaneous</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Pasta</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Pork</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Seafood</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Side</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Starter</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Vegan</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Vegetarian</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Breakfast</a>
+                    <ul class="pure-menu-children"></ul>
+                </li>
+
             </div>
+        </div>
+        
+        <!-- Demo of what the above dopdown should look like -->
+        <div class="pure-menu custom-restricted-width">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link">Beef</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item">
+                            <a class="pure-menu-link">Recepi name 1</a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a class="pure-menu-link">Recipe Name 2</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
     </section>
+
+    
+    
 
 
     <section id="main" class="hero">
@@ -115,7 +179,7 @@
 
 
 
-
+<script src="https://purecss.io/js/menus.js"></script>
 <script src="./assets/js/script.js"></script>
 </body>
 </html>

@@ -8,19 +8,34 @@
     background-position: center;
     background-attachment: fixed;
     background-position: 80%;
-    background-image: url("https://vinepair.com/wp-content/uploads/2017/05/sommelier-int.jpg");
+    background-image: url('../background/food-and-wine-bg.jpeg');
 }
 
+<<<<<<< HEAD
 .recipe-holder {
+=======
+
+
+.category-cards {
+    color: white;
+    background-color: rgb(195, 120, 120, 0.8);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+
+#recipe-holder {
+>>>>>>> 734541463185a69b35e6d920f78912555752ff0c
     margin: 30px;
     background-color: rgb(195, 120, 120, 0.8);
     border: 1px solid black;
     color: white;
     padding: 40px;
     border-radius: 10px;
-
     
-
+    
+    
 }
 
 #dine-n-wine {
@@ -61,8 +76,33 @@ header {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: rgb(195, 120, 120);
     color: rgb(234, 216, 216);
-
+    
 }
 
 
+.dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 12%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
 
+.dropdown-content li {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+#neg-measure-warning {
+    color: red;
+}
+
+
+.hide {
+    display: none;
+}
+
+.custom-restricted-width{
+    display:inline-block;
+}

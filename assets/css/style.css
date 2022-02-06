@@ -21,6 +21,7 @@
     color: white;
     padding: 40px;
     border-radius: 10px;
+    text-align: center;
     
     
     
@@ -91,9 +92,8 @@ h1 {
     font-size: 20px;
     color: white;
     background-color: rgb(195, 120, 120);
- 
-
 }
+
 
 .button-font {
     text-align: center;

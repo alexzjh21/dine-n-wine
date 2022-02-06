@@ -203,7 +203,7 @@ var saveRecipe = function(favoriteRecipes) {
 //FAV RECIPE function
 var favRecipe = function (event) {
     // get recipe name, ingredients and instructions
-    var 
+    // var 
     var recipeObj = {
         name: recipeTitleEl.innerHTML,
         ingredient: ingredientsEl.innerHTML,

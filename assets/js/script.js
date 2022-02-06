@@ -12,11 +12,12 @@ var calorieEl = document.querySelector("#calories-display");
 var fatEl = document.querySelector("#fat-display");
 var carbEl = document.querySelector("#carb-display");
 var sugarEl = document.querySelector("#sugar-display");
-var proteinEl = document.querySelector("#protein-display")
+var proteinEl = document.querySelector("#protein-display");
 var filterBtnEl = document.querySelector("#filter-btn");
-var dropdownEl = document.querySelector("#dropdown")
-var catHolder = document.querySelector('#category-holder')
-var recipeDropdown = document.querySelectorAll(".pure-menu-children")
+var dropdownEl = document.querySelector("#dropdown");
+var catHolder = document.querySelector('#category-holder');
+// var recipeDropdown = document.querySelectorAll(".menu-holder");
+var categoryNames = document.querySelectorAll(".categories");
 
 
 
@@ -50,12 +51,18 @@ var getRandomRecipe = function() {
 
 };
 
-// filter the recipes based on the 14 categories
-function filterByCat() {
+// show dropdown menu when click the filter by category button
+function showDropdown() {
+    dropdownEl.classList.remove("hide");
+}
 
+// filter the recipes based on the 14 categories
+function filterByCat(event) {
+    
     var category = this.innerText
     var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category
     //console.log(filterApi)
+    var recipeHolder = document.getElementById(category)
         
     fetch(filterApi)
     .then(function(res){
@@ -64,37 +71,19 @@ function filterByCat() {
     .then(function(data){
         console.log(data)
         
-        for(let i = 0; i < data.meals.length; i++) {
-            var recipeName = ""
-            recipeName += data.meals[i].strMeal
-
+        for(let i = 0; i < data.meals.length; i++) {  
             const listEl = document.createElement('li')
             listEl.setAttribute("class", "pure-menu-item")
             const recipeAEl = document.createElement('a')
             recipeAEl.setAttribute("class", "pure-menu-link")
+
+            var recipeName = data.meals[i].strMeal
             recipeAEl.textContent = recipeName
            
-            listEl.append(recipeAEl)
-            recipeDropdown.append(listEl)
+            listEl.appendChild(recipeAEl)
+            recipeHolder.append(listEl)
         }
 
-        // recipeDrop.classList.remove('hide')
-
-        // var categoryCard = ""
-        // // shows all the recipies when clicking on the categories
-        // for(let i = 0; i < data.meals.length; i++) {
-        //     categoryCard += `<div class="category-cards">
-        //     <h2 id="category-name">${data.meals[i].strMeal}</h2>
-        //     <p id="category-recipe"></p>
-        //     </div>`
-
-        //     // refactor for loop to dynamically create element using document.createElement
-        //     // add attributes
-        //     // add event listener
-        // }
-        // catHolder.innerHTML = categoryCard
-        // // show the cards for all the recipes in that category
-        // catHolder.classList.remove('hide')
     })
 
 
@@ -135,13 +124,11 @@ var getNutritionFacts = function(event) {
     })
 }
 
-// show dropdown menu when click the filter by category button
-function showDropdown() {
-    dropdownEl.classList.remove("hide");
-}
-
 
 
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
 nutritionButtonEl.addEventListener("click", getNutritionFacts);
 filterBtnEl.addEventListener("click", showDropdown);
+for(let i = 0; i < categoryNames.length; i++) {
+    categoryNames[i].addEventListener("click", filterByCat);
+}

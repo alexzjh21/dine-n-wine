@@ -30,7 +30,13 @@
      
         <button class="pure-button pure-button-active" id="random-btn">Random Recipe</button>
 
-        <button class=“pure-button pure-button-active” id=“list-btn”>Favorites</button>
+        <div>
+            <button class="pure-button pure-button-active" id="list-btn">Favorites</button>
+            <div class="dropdown-content hide" id="fav-list">
+                
+            </div>
+
+        </div>
 
         <button class="pure-button pure-button-active" id="save-btn">Save Recipe</button>
 
@@ -103,12 +109,12 @@
 
         <div id=recipe-holder class="recipe-holder">
 
-        <div class="hide" id="category-holder">
+        <!-- <div class="hide" id="category-holder">
             <div class="category-cards">
                 <h2 id="category-name"></h2>
                 <p id="category-recipe"></p>
             </div>
-        </div>
+        </div> -->
         <div id=recipe-holder>
 
             <h2 id="recipe-title">Recipe</h2>

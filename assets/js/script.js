@@ -12,14 +12,11 @@ var calorieEl = document.querySelector("#calories-display");
 var fatEl = document.querySelector("#fat-display");
 var carbEl = document.querySelector("#carb-display");
 var sugarEl = document.querySelector("#sugar-display");
-var proteinEl = document.querySelector("#protein-display")
-var  saveBtnEl = document.querySelector("#save-btn");
-var favoriteRecipes = [];
+var proteinEl = document.querySelector("#protein-display");
+var saveBtnEl = document.querySelector("#save-btn");
 
-
-
-
-
+var favoriteRecipe = [];
+var listBtnEl = document.querySelector("#list-btn");
 
 var getRandomRecipe = function() {
     var apiUrl = "https://www.themealdb.com/api/json/v1/1/random.php"
@@ -41,12 +38,10 @@ var getRandomRecipe = function() {
             }
             var imgSrc = meal['strMealThumb'];
             mealImgEl.setAttribute('src', imgSrc+"/preview")
-
-
         });
     });
-
 };
+
 
 var randomBtnHandler = function (event) {
     recipeTitleEl.innerHTML = "";
@@ -55,17 +50,29 @@ var randomBtnHandler = function (event) {
     getRandomRecipe();
 }
 //load recipe will display
+var loadRecipe = function() {
+    var retrieved = JSON.parse(localStorage.getItem("savedRecipe"));
+    console.log(retrieved);
 
+}
 // save recipe funtion sets array to local storage
-
+var saveRecipe = function(favoriteRecipe) {
+    localStorage.setItem("savedRecipe", JSON.stringify(favoriteRecipe));
+}
 var favRecipe = function (event) {
     // get recipe name, ingredients and instructions
     var recipeObj = {
-        mealName: 
-    }
+        name: recipeTitleEl.innerHTML, 
+        ingredient: ingredientsEl.innerHTML,
+        instruction: instructionsEl.innerHTML
+    };
     // push into favoriteRecipe array
+    favoriteRecipe.push(recipeObj);
+    console.log("list", favoriteRecipe);
 
     // call save recipe
+    saveRecipe();
+
 }
 
 var getNutritionFacts = function(event) {
@@ -94,7 +101,7 @@ var getNutritionFacts = function(event) {
     })
 }
 
-
+listBtnEl.addEventListener("click", loadRecipe);
 saveBtnEl.addEventListener("click", favRecipe);
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
 nutritionButtonEl.addEventListener("click", getNutritionFacts );

@@ -118,7 +118,51 @@ var getRandomRecipe = function() {
 
 };
 
+
+// show dropdown menu when click the filter by category button
+function showDropdown() {
+    dropdownEl.classList.remove("hide");
+}
+
+// filter the recipes based on the 14 categories
+function filterByCat(event) {
+    
+    var category = this.innerText
+    var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category
+    //console.log(filterApi)
+    var recipeHolder = document.getElementById(category)
+        
+    fetch(filterApi)
+    .then(function(res){
+        return res.json()
+    })
+    .then(function(data){
+        console.log(data)
+        
+        for(let i = 0; i < data.meals.length; i++) {  
+            const listEl = document.createElement('li')
+            listEl.setAttribute("class", "pure-menu-item")
+            const recipeAEl = document.createElement('a')
+            recipeAEl.setAttribute("class", "pure-menu-link")
+
+            var recipeName = data.meals[i].strMeal
+            recipeAEl.textContent = recipeName
+           
+            listEl.appendChild(recipeAEl)
+            recipeHolder.append(listEl)
+        }
+
+    })
+
+
+    // seperate function call 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId
+
+};
+
+var randomBtnHandler = function (event) {
+
 function displayCategoryRecipe(recId) {
+
     recipeTitleEl.innerHTML = "";
     ingredientsEl.innerHTML = "";
     instructionsEl.innerHTML = "";
@@ -213,10 +257,16 @@ var randomBtnHandler = function (event) {
 // var favRecipe = function (event) {
 //     // get recipe name, ingredients and instructions
 //     var recipeObj = {
+
+//         mealName: 
+//     }
+//     // push into favoriteRecipe array
+
 //         mealName: recipeTitleEl.innerHTML
 
 //     }
     // push into favoriteRecipe array
+
 
 //     // call save recipe
 // }
@@ -256,6 +306,13 @@ var getNutritionFacts = function(event) {
 
 //saveBtnEl.addEventListener("click", favRecipe);
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
+
+nutritionButtonEl.addEventListener("click", getNutritionFacts);
+filterBtnEl.addEventListener("click", showDropdown);
+for(let i = 0; i < categoryNames.length; i++) {
+    categoryNames[i].addEventListener("click", filterByCat);
+}
+
 nutritionButtonEl.addEventListener("click", getNutritionFacts )
 nutritionButtonEl.addEventListener("click", getNutritionFacts);
 filterBtnEl.addEventListener("click", showDropdown);
@@ -272,6 +329,7 @@ for(let i = 0; i < categoryNames.length; i++) {
 //         console.log("hello");
 //     })
 // }
+
 
 
 

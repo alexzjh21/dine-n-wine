@@ -1,6 +1,8 @@
 .hero {
     padding: 20px 35px;
     margin: 10px;
+    width: 100%;
+    margin: 10px auto;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -9,24 +11,11 @@
     background-attachment: fixed;
     background-position: 80%;
     background-image: url('../background/food-and-wine-bg.jpeg');
-}
 
-<<<<<<< HEAD
-.recipe-holder {
-=======
-
-
-.category-cards {
-    color: white;
-    background-color: rgb(195, 120, 120, 0.8);
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 20px;
 }
 
 
 #recipe-holder {
->>>>>>> 734541463185a69b35e6d920f78912555752ff0c
     margin: 30px;
     background-color: rgb(195, 120, 120, 0.8);
     border: 1px solid black;
@@ -39,8 +28,6 @@
 }
 
 #dine-n-wine {
-    text-align: center;
-    padding: 25px;
     margin-bottom: 7px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(234, 216, 216);
@@ -48,13 +35,35 @@
 
 header {
     background: linear-gradient(to bottom right, red, #6D0000);
-    padding: 25px;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  
     
 }
 
-#button-holder, #nutrition {
+h1 {
+    font-family:'Dosis', sans-serif;
+    /* 'Open Sans', sans-serif; */
+}
+
+
+.explainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  
+}
+
+.nutrition-facts {
     margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+
 }
 
 
@@ -62,22 +71,56 @@ header {
     font-size: smaller;
 }
 
-.buttons-for-recipes {
+.buttons-for-recipes{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 20px;
-    
+}
+
+.main-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .pure-button {
-    border-radius: 20px;
+    margin: 15px auto;
+    border-radius: 25px;
+    font-family: 'Dosis', sans-serif;
     font-size: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
     background-color: rgb(195, 120, 120);
+
+}
+
+.button-font {
+    text-align: center;
+
     color: rgb(234, 216, 216);
     
 }
+
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 12%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+.dropdown-content li {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+#neg-measure-warning {
+    color: red;
+}
+
 
 
 .dropdown-content {
@@ -99,6 +142,7 @@ header {
 }
 
 
+
 .hide {
     display: none;
 }
@@ -106,3 +150,82 @@ header {
 .custom-restricted-width{
     display:inline-block;
 }
+
+.pure-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#nutrition-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+
+p {
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* @media screen and (max-width: 768px) {
+    .intro-content{
+        flex
+        pure-u-3-5
+    }
+    
+    .intro-photo {
+        zoom: 10%;
+        margin: 0 auto;
+    }
+} */
+
+@media screen and (max-width: 575px) {
+
+    .main-buttons{
+        width: 80%;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+
+    
+}
+
+@media screen and (max-width: 485px) {
+
+    fieldset {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+}
+
+@media screen and (max-width: 385px) {
+
+    fieldset {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+}
+
+

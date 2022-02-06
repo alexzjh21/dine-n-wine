@@ -44,6 +44,7 @@ var recipeCards = function(){
 }
 
 
+
 var getRandomRecipe = function() {
     var apiUrl = "https://www.themealdb.com/api/json/v1/1/random.php"
 
@@ -117,6 +118,7 @@ var getRandomRecipe = function() {
 
 };
 
+
 // show dropdown menu when click the filter by category button
 function showDropdown() {
     dropdownEl.classList.remove("hide");
@@ -158,18 +160,93 @@ function filterByCat(event) {
 };
 
 var randomBtnHandler = function (event) {
+
+function displayCategoryRecipe(recId) {
+
+    recipeTitleEl.innerHTML = "";
+    ingredientsEl.innerHTML = "";
+    instructionsEl.innerHTML = "";
+    dropdownEl.classList.add("hide");
+    //console.log(recId);
+    var apiUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + recId
+
+    fetch(apiUrl).then(function(response){
+        response.json().then(function(data){
+            console.log(data)
+            const meal = data.meals[0];
+            recipeTitleEl.innerHTML = meal.strMeal;
+            instructionsEl.innerHTML = "Instructions: <br> " + meal.strInstructions;
+            ingredientsEl.innerHTML = "Ingredients: <br>";
+            // ingredientsEl.innerHTML = "Ingredients: <br>" + data.meals[0].strIngredient1 + ": " + data.meals[0].strMeasure1 + "<br>" +  data.meals[0].strIngredient2 + ": " + data.meals[0].strMeasure2 + "<br>" +  data.meals[0].strIngredient3 + ": " + data.meals[0].strMeasure3 + "<br>" + data.meals[0].strIngredient4 + ": " + data.meals[0].strMeasure4 + "<br>" +  data.meals[0].strIngredient5 + ": " + data.meals[0].strMeasure5 + "<br>" +  data.meals[0].strIngredient6 + ": " + data.meals[0].strMeasure6 + "<br>" +  data.meals[0].strIngredient7 + ": " + data.meals[0].strMeasure7 + "<br>" +  data.meals[0].strIngredient8 + ": " + data.meals[0].strMeasure8 + "<br>" +  data.meals[0].strIngredient9 + ": " + data.meals[0].strMeasure9 + "<br>" +  data.meals[0].strIngredient10 + ": " + data.meals[0].strMeasure10 + "<br>" +  data.meals[0].strIngredient11 + ": " + data.meals[0].strMeasure11 + "<br>" +  data.meals[0].strIngredient12 + ": " + data.meals[0].strMeasure12 + "<br>" +  data.meals[0].strIngredient13 + ": " + data.meals[0].strMeasure13 + "<br>" +  data.meals[0].strIngredient14 + ": " + data.meals[0].strMeasure14 + "<br>" +  data.meals[0].strIngredient15 + ": " + data.meals[0].strMeasure15 + "<br>" +  data.meals[0].strIngredient16 + ": " + data.meals[0].strMeasure16 + "<br>" +  data.meals[0].strIngredient17 + ": " + data.meals[0].strMeasure17 + "<br>" +  data.meals[0].strIngredient18 + ": " + data.meals[0].strMeasure18 + "<br>" +  data.meals[0].strIngredient19 + ": " + data.meals[0].strMeasure19 + "<br>" +  data.meals[0].strIngredient20 + ": " + data.meals[0].strMeasure20;
+            for(let i = 1; i < 21; i++){
+                if(meal['strIngredient' + i] !== "") {
+                    ingredientsEl.innerHTML += meal['strIngredient' + i] + ": " + meal['strMeasure' + i] + "<br>";
+                } else {}
+
+                //console.log(meal['strIngredient' + i] + ', ' + meal['strMeasure' + i])
+            }
+            var imgSrc = meal['strMealThumb'];
+            mealImgEl.setAttribute('src', imgSrc+"/preview")
+        })
+    })
+
+    
+}
+
+// show dropdown menu when click the filter by category button
+function showDropdown() {
+    dropdownEl.classList.remove("hide");
+}
+
+// filter the recipes based on the 14 categories
+function filterByCat(event) {
+    
+    var category = this.innerText
+    var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category
+    //console.log(filterApi)
+    var recipeHolder = document.getElementById(category)
+        
+    fetch(filterApi)
+    .then(function(res){
+        return res.json()
+    })
+    .then(function(data){
+       // console.log(data)
+        
+        for(let i = 0; i < data.meals.length; i++) {  
+            const listEl = document.createElement('li');
+            listEl.setAttribute("class", "pure-menu-item");
+            const recipeAEl = document.createElement('a');
+            recipeAEl.setAttribute("class", "pure-menu-link category-recipe");
+            var recipeId = data.meals[i].idMeal;
+            recipeAEl.setAttribute("id", recipeId);
+
+            var recipeName = data.meals[i].strMeal
+            recipeAEl.textContent = recipeName
+           
+            listEl.appendChild(recipeAEl)
+            recipeHolder.append(listEl)
+
+            recipeAEl.addEventListener("click", function(){
+
+                var idMeal = this.getAttribute("id");
+                displayCategoryRecipe(idMeal);
+            })
+        }
+
+    })
+
+
+    // seperate function call 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId
+
+};
+
+var randomBtnHandler = function (event) {
     recipeTitleEl.innerHTML = "";
     ingredientsEl.innerHTML = "";
     instructionsEl.innerHTML = "";
 
-    if (recipeColumn && instructionsColumn && ingredientColumn){
-        recipeColumn.remove();
-        instructionsColumn.remove();
-        ingredientColumn.remove();
-    }
-
- 
-    
+    dropdownEl.classList.add("hide");
 
     getRandomRecipe();
 }
@@ -180,9 +257,16 @@ var randomBtnHandler = function (event) {
 // var favRecipe = function (event) {
 //     // get recipe name, ingredients and instructions
 //     var recipeObj = {
+
 //         mealName: 
 //     }
 //     // push into favoriteRecipe array
+
+//         mealName: recipeTitleEl.innerHTML
+
+//     }
+    // push into favoriteRecipe array
+
 
 //     // call save recipe
 // }
@@ -222,9 +306,30 @@ var getNutritionFacts = function(event) {
 
 //saveBtnEl.addEventListener("click", favRecipe);
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
+
 nutritionButtonEl.addEventListener("click", getNutritionFacts);
 filterBtnEl.addEventListener("click", showDropdown);
 for(let i = 0; i < categoryNames.length; i++) {
     categoryNames[i].addEventListener("click", filterByCat);
 }
+
+nutritionButtonEl.addEventListener("click", getNutritionFacts )
+nutritionButtonEl.addEventListener("click", getNutritionFacts);
+filterBtnEl.addEventListener("click", showDropdown);
+
+for(let i = 0; i < categoryNames.length; i++) {
+    categoryNames[i].addEventListener("click", filterByCat);
+}
+
+
+// var categoryRecipes = document.getElementsByClassName("category-recipe");
+// console.log('categoryRecipes', categoryRecipes)
+// for(var i = 0; i < categoryRecipes.length; i++) {
+//     categoryRecipes[i].addEventListener("click", function(){
+//         console.log("hello");
+//     })
+// }
+
+
+
 

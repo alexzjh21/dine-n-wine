@@ -11,16 +11,7 @@
     background-attachment: fixed;
     background-position: 80%;
     background-image: url('../background/food-and-wine-bg.jpeg');
-}
 
-
-
-.category-cards {
-    color: white;
-    background-color: rgb(195, 120, 120, 0.8);
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 20px;
 }
 
 
@@ -100,10 +91,34 @@ h1 {
     font-size: 20px;
     color: white;
     background-color: rgb(195, 120, 120);
+
 }
 
 .button-font {
     text-align: center;
+
+    color: rgb(234, 216, 216);
+    
+}
+
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 12%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+.dropdown-content li {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+#neg-measure-warning {
+    color: red;
 }
 
 
@@ -125,6 +140,7 @@ h1 {
 #neg-measure-warning {
     color: red;
 }
+
 
 
 .hide {
@@ -211,4 +227,5 @@ footer {
     }
     
 }
+
 

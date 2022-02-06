@@ -1,29 +1,17 @@
-
-
 var randomRecipeBtnEl = document.querySelector("#random-btn");
-
 // Recipe Forms
 var hero = document.querySelector("#main")
 var recipeTitleEl = document.querySelector("#recipe-title");
 var mealImgEl = document.querySelector("#meal-img")
 var ingredientsEl = document.querySelector("#ingredients");
 var instructionsEl = document.querySelector("#instructions");
-var recipeColumn = ""
-var ingredientColumn = ""
-var instructionsColumn = ""
-
 // Dynamic Generated HTML with Random Recipe
-
-
 var nutritionFactsEl = document.querySelector("#nutrition-facts"); //WHAT'S THIS
-
 // Information Input Selectors
 var formIngredientEl = document.querySelector("#stacked-ingredient");
 var formMeasureEl = document.querySelector("#stacked-measure");
 var formUnitEl = document.querySelector("#stacked-unit");
-
 var nutritionButtonEl = document.querySelector("#nutrition-btn");
-
 //Nutrition Facts Table
 var calorieEl = document.querySelector("#calories-display");
 var fatEl = document.querySelector("#fat-display");
@@ -36,6 +24,7 @@ var catHolder = document.querySelector('#category-holder');
 var categoryNames = document.querySelectorAll(".categories");
 var saveBtnEl = document.querySelector("#save-btn");
 var favoriteRecipes = [];
+var listBtnEl = document.querySelector("#list-btn");
 var measureWarningEl = document.querySelector("#neg-measure-warning");
 
 
@@ -201,26 +190,32 @@ var randomBtnHandler = function (event) {
     dropdownEl.classList.add("hide");
     getRandomRecipe();
 }
+//functions for favorite recipes
 //load recipe will display
-
+var loadRecipe = function() {
+    var retrieved = JSON.parse(localStorage.getItem("savedRecipe"));
+    console.log(retrieved);
+}
 // save recipe funtion sets array to local storage
-
-// var favRecipe = function (event) {
-//     // get recipe name, ingredients and instructions
-//     var recipeObj = {
-
-//         mealName: 
-//     }
-//     // push into favoriteRecipe array
-
-//         mealName: recipeTitleEl.innerHTML
-
-//     }
+var saveRecipe = function(favoriteRecipes) {
+    localStorage.setItem("favoriteRecipes",JSON.stringify(favoriteRecipes));
+}
+//FAV RECIPE function
+var favRecipe = function (event) {
+    // get recipe name, ingredients and instructions
+    var 
+    var recipeObj = {
+        name: recipeTitleEl.innerHTML,
+        ingredient: ingredientsEl.innerHTML,
+        instruction: instructionsEl.innerHTML,
+        //image:
+    };
     // push into favoriteRecipe array
-
-
-//     // call save recipe
-// }
+    favoriteRecipes.push(recipeObj);
+    console.log("list", favoriteRecipes);
+    // call save recipe
+    saveRecipe();
+}
 
 var getNutritionFacts = function(event) {
     event.preventDefault();
@@ -259,18 +254,14 @@ var getNutritionFacts = function(event) {
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
 
 nutritionButtonEl.addEventListener("click", getNutritionFacts);
+
 filterBtnEl.addEventListener("click", showDropdown);
 for(let i = 0; i < categoryNames.length; i++) {
     categoryNames[i].addEventListener("click", filterByCat);
 };
 
-nutritionButtonEl.addEventListener("click", getNutritionFacts )
-nutritionButtonEl.addEventListener("click", getNutritionFacts);
-filterBtnEl.addEventListener("click", showDropdown);
-
-for(let i = 0; i < categoryNames.length; i++) {
-    categoryNames[i].addEventListener("click", filterByCat);
-};
+listBtnEl.addEventListener("click", loadRecipe);
+saveBtnEl.addEventListener("click", favRecipe);
 
 
 // var categoryRecipes = document.getElementsByClassName("category-recipe");

@@ -11,12 +11,12 @@
     background-image: url("https://vinepair.com/wp-content/uploads/2017/05/sommelier-int.jpg");
 }
 
-#recipe-holder {
+.recipe-holder {
     margin: 30px;
     background-color: rgb(195, 120, 120, 0.8);
     border: 1px solid black;
     color: white;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
 
     

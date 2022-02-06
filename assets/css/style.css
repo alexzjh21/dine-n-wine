@@ -11,6 +11,9 @@
     background-image: url('../background/food-and-wine-bg.jpeg');
 }
 
+<<<<<<< HEAD
+.recipe-holder {
+=======
 
 
 .category-cards {
@@ -23,11 +26,12 @@
 
 
 #recipe-holder {
+>>>>>>> 734541463185a69b35e6d920f78912555752ff0c
     margin: 30px;
     background-color: rgb(195, 120, 120, 0.8);
     border: 1px solid black;
     color: white;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
     
     

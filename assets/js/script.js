@@ -59,6 +59,7 @@ var loadRecipe = function() {
 var saveRecipe = function(favoriteRecipe) {
     localStorage.setItem("savedRecipe", JSON.stringify(favoriteRecipe));
 }
+//FAV RECIPE function
 var favRecipe = function (event) {
     // get recipe name, ingredients and instructions
     var recipeObj = {

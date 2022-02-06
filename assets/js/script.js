@@ -12,10 +12,15 @@ var calorieEl = document.querySelector("#calories-display");
 var fatEl = document.querySelector("#fat-display");
 var carbEl = document.querySelector("#carb-display");
 var sugarEl = document.querySelector("#sugar-display");
-var proteinEl = document.querySelector("#protein-display")
-var  saveBtnEl = document.querySelector("#save-btn");
+var proteinEl = document.querySelector("#protein-display");
+var filterBtnEl = document.querySelector("#filter-btn");
+var dropdownEl = document.querySelector("#dropdown");
+var catHolder = document.querySelector('#category-holder');
+var categoryNames = document.querySelectorAll(".categories");
+var saveBtnEl = document.querySelector("#save-btn");
 var favoriteRecipes = [];
 var measureWarningEl = document.querySelector("#neg-measure-warning");
+
 
 
 
@@ -46,6 +51,46 @@ var getRandomRecipe = function() {
 
         });
     });
+
+};
+
+// show dropdown menu when click the filter by category button
+function showDropdown() {
+    dropdownEl.classList.remove("hide");
+}
+
+// filter the recipes based on the 14 categories
+function filterByCat(event) {
+    
+    var category = this.innerText
+    var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category
+    //console.log(filterApi)
+    var recipeHolder = document.getElementById(category)
+        
+    fetch(filterApi)
+    .then(function(res){
+        return res.json()
+    })
+    .then(function(data){
+        console.log(data)
+        
+        for(let i = 0; i < data.meals.length; i++) {  
+            const listEl = document.createElement('li')
+            listEl.setAttribute("class", "pure-menu-item")
+            const recipeAEl = document.createElement('a')
+            recipeAEl.setAttribute("class", "pure-menu-link")
+
+            var recipeName = data.meals[i].strMeal
+            recipeAEl.textContent = recipeName
+           
+            listEl.appendChild(recipeAEl)
+            recipeHolder.append(listEl)
+        }
+
+    })
+
+
+    // seperate function call 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId
 
 };
 
@@ -104,4 +149,9 @@ var getNutritionFacts = function(event) {
 
 //saveBtnEl.addEventListener("click", favRecipe);
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
-nutritionButtonEl.addEventListener("click", getNutritionFacts );
+nutritionButtonEl.addEventListener("click", getNutritionFacts);
+filterBtnEl.addEventListener("click", showDropdown);
+for(let i = 0; i < categoryNames.length; i++) {
+    categoryNames[i].addEventListener("click", filterByCat);
+}
+

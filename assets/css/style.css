@@ -12,6 +12,16 @@
 }
 
 
+
+.category-cards {
+    color: white;
+    background-color: rgb(195, 120, 120, 0.8);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+
 #recipe-holder {
     margin: 30px;
     background-color: rgb(195, 120, 120, 0.8);
@@ -19,9 +29,9 @@
     color: white;
     padding: 20px;
     border-radius: 10px;
-
     
-
+    
+    
 }
 
 #dine-n-wine {
@@ -62,7 +72,22 @@ header {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: rgb(195, 120, 120);
     color: rgb(234, 216, 216);
+    
+}
 
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 12%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content li {
+    color: black;
+    text-decoration: none;
+    display: block;
 }
 
 #neg-measure-warning {
@@ -70,4 +95,10 @@ header {
 }
 
 
+.hide {
+    display: none;
+}
 
+.custom-restricted-width{
+    display:inline-block;
+}

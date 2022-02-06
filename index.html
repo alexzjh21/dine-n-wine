@@ -4,27 +4,113 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700&family=Open+Sans&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
     <title>Dine'n'Wine</title>
 </head>
+
 <body>
     <header id="dine-n-wine">
-        <h1>Dine'n'Wine!</h1>
-        <p id="explainer">Find a recipe randomly and look up nutrition facts by ingredients!</p>
+
+        <div class="title">
+            <h1>Dine'n'Wine</h1>
+        </div>
+        <div class="explainer">
+            <p id="explainer">Find a recipe, and see how to cook it!</p>
+        </div>
+
     </header>
+
 
     <section class="buttons-for-recipes" id="button-holder">
      
-            <button class="pure-button pure-button-active" id="random-btn">Random Recipe</button>
+        <button class="pure-button pure-button-active" id="random-btn">Random Recipe</button>
 
-            <!-- <button class="pure-button pure-button-active" id="save-btn">Save Recipe</button> -->
+        <button class="pure-button pure-button-active" id="save-btn">Save Recipe</button>
+
+        <div>
+            <button class="pure-button" id="filter-btn">Filter by Category</button>
+            <div class="dropdown-content hide" id="dropdown">
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Beef</a>
+                    <ul class="pure-menu-children" id="Beef"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Breakfast</a>
+                    <ul class="pure-menu-children" id="Breakfast"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Chicken</a>
+                    <ul class="pure-menu-children" id="Chicken"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Dessert</a>
+                    <ul class="pure-menu-children" id="Dessert"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Goat</a>
+                    <ul class="pure-menu-children" id="Goat"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Lamb</a>
+                    <ul class="pure-menu-children" id="Lamb"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Miscellaneous</a>
+                    <ul class="pure-menu-children" id=Miscellaneous></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Pasta</a>
+                    <ul class="pure-menu-children" id="Pasta"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Pork</a>
+                    <ul class="pure-menu-children" id="Pork"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Seafood</a>
+                    <ul class="pure-menu-children" id="Seafood"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Side</a>
+                    <ul class="pure-menu-children" id="Side"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Starter</a>
+                    <ul class="pure-menu-children" id="Starter"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Vegan</a>
+                    <ul class="pure-menu-children" id="Vegan"></ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children">
+                    <a class="pure-menu-link categories">Vegetarian</a>
+                    <ul class="pure-menu-children" id="Vegetarian"></ul>
+                </li>
+
+            </div>
+        </div>
 
     </section>
 
-
     <section id="main" class="hero">
+
+        <div id=recipe-holder class="recipe-holder">
+
+        <div class="hide" id="category-holder">
+            <div class="category-cards">
+                <h2 id="category-name"></h2>
+                <p id="category-recipe"></p>
+            </div>
+        </div>
         <div id=recipe-holder>
+
             <h2 id="recipe-title">Recipe</h2>
             <img id="meal-img" />
             <p id="ingredients">Ingredients</p>
@@ -32,8 +118,9 @@
             
         </div>
     </section>
-    <section id="nutrition">
-        <form class="pure-form pure-form-stacked">
+
+    <section class="nutrition-facts " id="nutrition">
+        <form class="pure-form pure-form-stacked ">
             <fieldset >
                 <legend>Nutrition Information by Ingredient</legend>
                 <label for="stacked-ingredient"></label>
@@ -41,6 +128,7 @@
                 <span class="pure-form-message">This is a required field.</span>
                 <label for="stacked-measure">Measure</label>
                 <input type="number" id="stacked-measure" placeholder="measure" />
+                <span id="neg-measure-warning" class="pure-form-message"></span>
                 <label for="stacked-unit">Unit</label>
                 <select id="stacked-unit">
                     <option>tsp</option>
@@ -56,6 +144,7 @@
                 <button type="submit" id="nutrition-btn" class="pure-button pure-button-primary">Find Nutritional Facts</button>
             </fieldset>
         </form>
+        
         <div id="nutrition-holder">
             <table class="pure-table pure-table-horizontal">
                 <thead>
@@ -83,13 +172,17 @@
                     </tr>
                 </tbody>
             </table>
-           
         </div>
+
     </section>
 
+    <footer>
+        <div id="edamam-badge" data-color="white"></div>
+    </footer>
 
 
 
+<script src="https://purecss.io/js/menus.js"></script>
 <script src="./assets/js/script.js"></script>
 </body>
 </html>

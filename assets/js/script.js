@@ -1,29 +1,17 @@
-
-
 var randomRecipeBtnEl = document.querySelector("#random-btn");
-
 // Recipe Forms
 var hero = document.querySelector("#main")
 var recipeTitleEl = document.querySelector("#recipe-title");
 var mealImgEl = document.querySelector("#meal-img")
 var ingredientsEl = document.querySelector("#ingredients");
 var instructionsEl = document.querySelector("#instructions");
-var recipeColumn = ""
-var ingredientColumn = ""
-var instructionsColumn = ""
-
 // Dynamic Generated HTML with Random Recipe
-
-
 var nutritionFactsEl = document.querySelector("#nutrition-facts"); //WHAT'S THIS
-
 // Information Input Selectors
 var formIngredientEl = document.querySelector("#stacked-ingredient");
 var formMeasureEl = document.querySelector("#stacked-measure");
 var formUnitEl = document.querySelector("#stacked-unit");
-
 var nutritionButtonEl = document.querySelector("#nutrition-btn");
-
 //Nutrition Facts Table
 var calorieEl = document.querySelector("#calories-display");
 var fatEl = document.querySelector("#fat-display");

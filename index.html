@@ -29,10 +29,6 @@
 
 
     <section class="buttons-for-recipes" id="button-holder">
-     
-        <button class="pure-button pure-button-active" id="random-btn">Random Recipe</button>
-
-        <button class="pure-button pure-button-active" id="save-btn">Save Recipe</button>
 
         <div>
             <button class="pure-button" id="filter-btn">Filter by Category</button>
@@ -96,22 +92,40 @@
 
             </div>
         </div>
+        <div>
+            <button class="pure-button pure-button-active" id="random-btn">Random Recipe</button>
+        </div>
+
+        <div>
+            <button class="pure-button pure-button-active" id="list-btn">Favorites</button>
+            <div class="dropdown-content hide" id="fav-list">
+
+            </div>
+
+        </div>
+
+        <button class="pure-button pure-button-active" id="save-btn">Add to Favorites</button>
+
+        
 
     </section>
 
     <section id="main" class="hero">
 
-        <div id=recipe-holder class="recipe-holder">
+        <!-- <div id=recipe-holder class="recipe-holder"> -->
 
-        <div class="hide" id="category-holder">
+        <!-- <div class="hide" id="category-holder">
             <div class="category-cards">
                 <h2 id="category-name"></h2>
                 <p id="category-recipe"></p>
             </div>
-        </div>
-        <div id=recipe-holder>
+        </div> -->
 
-            <h2 id="recipe-title">Recipe</h2>
+
+        <div class="recipe-holder" id=recipe-holder>
+
+
+            <h2 id="recipe-title">Recipe Appears Here</h2>
             <img id="meal-img" />
             <p id="ingredients">Ingredients</p>
             <p id="instructions">Instructions</p>
@@ -127,7 +141,7 @@
                 <input type="text" id="stacked-ingredient" placeholder="Ingredient" />
                 <span class="pure-form-message">This is a required field.</span>
                 <label for="stacked-measure">Measure</label>
-                <input type="number" id="stacked-measure" placeholder="measure" />
+                <input type="number" id="stacked-measure" placeholder="Measure" />
                 <span id="neg-measure-warning" class="pure-form-message"></span>
                 <label for="stacked-unit">Unit</label>
                 <select id="stacked-unit">

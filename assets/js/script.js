@@ -1,29 +1,17 @@
-
-
 var randomRecipeBtnEl = document.querySelector("#random-btn");
-
 // Recipe Forms
 var hero = document.querySelector("#main")
 var recipeTitleEl = document.querySelector("#recipe-title");
 var mealImgEl = document.querySelector("#meal-img")
 var ingredientsEl = document.querySelector("#ingredients");
 var instructionsEl = document.querySelector("#instructions");
-var recipeColumn = ""
-var ingredientColumn = ""
-var instructionsColumn = ""
-
 // Dynamic Generated HTML with Random Recipe
-
-
 var nutritionFactsEl = document.querySelector("#nutrition-facts"); //WHAT'S THIS
-
 // Information Input Selectors
 var formIngredientEl = document.querySelector("#stacked-ingredient");
 var formMeasureEl = document.querySelector("#stacked-measure");
 var formUnitEl = document.querySelector("#stacked-unit");
-
 var nutritionButtonEl = document.querySelector("#nutrition-btn");
-
 //Nutrition Facts Table
 var calorieEl = document.querySelector("#calories-display");
 var fatEl = document.querySelector("#fat-display");
@@ -35,9 +23,11 @@ var dropdownEl = document.querySelector("#dropdown");
 var catHolder = document.querySelector('#category-holder');
 var categoryNames = document.querySelectorAll(".categories");
 var saveBtnEl = document.querySelector("#save-btn");
-var favoriteRecipes = [];
+var favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+var listBtnEl = document.getElementById("list-btn");
+var favListEl = document.getElementById("fav-list");
 var measureWarningEl = document.querySelector("#neg-measure-warning");
-
+var heroEl = document.getElementById("main");
 
 
 
@@ -72,45 +62,45 @@ var getRandomRecipe = function() {
 };
 
 
-// show dropdown menu when click the filter by category button
-function showDropdown() {
-    dropdownEl.classList.remove("hide");
-}
+// // show dropdown menu when click the filter by category button
+// function showDropdown() {
+//     dropdownEl.classList.remove("hide");
+// }
 
-// filter the recipes based on the 14 categories
-function filterByCat(event) {
+// // filter the recipes based on the 14 categories
+// function filterByCat(event) {
     
-    var category = this.innerText
-    var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category
-    //console.log(filterApi)
-    var recipeHolder = document.getElementById(category)
+//     var category = this.innerText
+//     var filterApi = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category
+//     //console.log(filterApi)
+//     var recipeHolder = document.getElementById(category)
         
-    fetch(filterApi)
-    .then(function(res){
-        return res.json()
-    })
-    .then(function(data){
-        console.log(data)
+//     fetch(filterApi)
+//     .then(function(res){
+//         return res.json()
+//     })
+//     .then(function(data){
+//         console.log(data)
         
-        for(let i = 0; i < data.meals.length; i++) {  
-            const listEl = document.createElement('li')
-            listEl.setAttribute("class", "pure-menu-item")
-            const recipeAEl = document.createElement('a')
-            recipeAEl.setAttribute("class", "pure-menu-link")
+//         for(let i = 0; i < data.meals.length; i++) {  
+//             const listEl = document.createElement('li')
+//             listEl.setAttribute("class", "pure-menu-item")
+//             const recipeAEl = document.createElement('a')
+//             recipeAEl.setAttribute("class", "pure-menu-link")
 
-            var recipeName = data.meals[i].strMeal
-            recipeAEl.textContent = recipeName
+//             var recipeName = data.meals[i].strMeal
+//             recipeAEl.textContent = recipeName
            
-            listEl.appendChild(recipeAEl)
-            recipeHolder.append(listEl)
-        }
+//             listEl.appendChild(recipeAEl)
+//             recipeHolder.append(listEl)
+//         }
 
-    })
+//     })
 
 
-    // seperate function call 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId
+//     // seperate function call 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId
 
-};
+// };
 
 
 
@@ -120,6 +110,7 @@ function displayCategoryRecipe(recId) {
     ingredientsEl.innerHTML = "";
     instructionsEl.innerHTML = "";
     dropdownEl.classList.add("hide");
+    favListEl.classList.add("hide");
     //console.log(recId);
     var apiUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + recId
 
@@ -149,6 +140,7 @@ function displayCategoryRecipe(recId) {
 // show dropdown menu when click the filter by category button
 function showDropdown() {
     dropdownEl.classList.remove("hide");
+    favListEl.classList.add("hide");
 }
 
 // filter the recipes based on the 14 categories
@@ -188,10 +180,7 @@ function filterByCat(event) {
         }
 
     })
-
-
     // seperate function call 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId
-
 };
 
 var randomBtnHandler = function (event) {
@@ -199,28 +188,83 @@ var randomBtnHandler = function (event) {
     ingredientsEl.innerHTML = "";
     instructionsEl.innerHTML = "";
     dropdownEl.classList.add("hide");
+    favListEl.classList.add("hide");
     getRandomRecipe();
 }
-//load recipe will display
+//functions for favorite recipes
+// load recipe will display
+var loadRecipe = function() {
+    favListEl.innerHTML = ""
+    favListEl.classList.remove("hide");
+    dropdownEl.classList.add("hide");
+    var retrieved = JSON.parse(localStorage.getItem("favoriteRecipes"));
+    console.log(retrieved);
+
+    for(let i = 0; i < retrieved.length; i++) {  
+        const listEl = document.createElement('li');
+        listEl.setAttribute("class", "pure-menu-item");
+        const recipeAEl = document.createElement('a');
+        recipeAEl.setAttribute("class", "pure-menu-link");
+        var recipeName = retrieved[i].name;
+        recipeAEl.textContent = recipeName;
+
+        listEl.appendChild(recipeAEl);
+        favListEl.append(listEl);
+
+        recipeAEl.addEventListener("click", function(){
+            recipeTitleEl.innerHTML = "";
+            ingredientsEl.innerHTML = "";
+            instructionsEl.innerHTML = "";
+            favListEl.classList.add("hide");
+            recipeTitleEl.innerHTML = retrieved[i].name;
+            instructionsEl.innerHTML = retrieved[i].instruction;
+            ingredientsEl.innerHTML = retrieved[i].ingredient;
+            mealImgEl.setAttribute('src', retrieved[i].image);
+        })
+
+    }
+};
 
 // save recipe funtion sets array to local storage
+var saveRecipe = function(favoriteRecipes) {
+    localStorage.setItem("favoriteRecipes",JSON.stringify(favoriteRecipes));
+}
 
-// var favRecipe = function (event) {
-//     // get recipe name, ingredients and instructions
-//     var recipeObj = {
+//FAV RECIPE function
+var favRecipe = function (event) {
+    // get recipe name, ingredients and instructions
 
-//         mealName: 
-//     }
-//     // push into favoriteRecipe array
+    var imgSrc = mealImgEl.getAttribute("src");
 
-//         mealName: recipeTitleEl.innerHTML
+    var recipeObj = {
+        name: recipeTitleEl.innerHTML,
+        ingredient: ingredientsEl.innerHTML,
+        instruction: instructionsEl.innerHTML,
+        image: imgSrc
+    };
+    var isIncluded = false;
+    for(var i; i < favoriteRecipes.length; i++) {
+        if(favoriteRecipes[i].name == recipeObj.name) {
+            isIncluded = true;
+            console.log("for loop works")
+            break;
+        }
+    }
+    if (recipeObj.name === "Recipe") {
+        return
+    } 
+    else if (isIncluded == true) {
+        console.log("haha")
+        return
+    } else {
 
-//     }
-    // push into favoriteRecipe array
-
-
-//     // call save recipe
-// }
+        // push into favoriteRecipe array
+        favoriteRecipes.push(recipeObj);
+       // console.log("list", favoriteRecipes);
+        // call save recipe
+        saveRecipe(favoriteRecipes);
+    }   
+};
 
 var getNutritionFacts = function(event) {
     event.preventDefault();
@@ -254,23 +298,26 @@ var getNutritionFacts = function(event) {
     }   
 }
 
+function clearLists() {
+    dropdownEl.classList.add("hide");
+    favListEl.classList.add("hide");
+}
+
 
 //saveBtnEl.addEventListener("click", favRecipe);
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
 
 nutritionButtonEl.addEventListener("click", getNutritionFacts);
+
 filterBtnEl.addEventListener("click", showDropdown);
 for(let i = 0; i < categoryNames.length; i++) {
     categoryNames[i].addEventListener("click", filterByCat);
 };
 
-nutritionButtonEl.addEventListener("click", getNutritionFacts )
-nutritionButtonEl.addEventListener("click", getNutritionFacts);
-filterBtnEl.addEventListener("click", showDropdown);
+saveBtnEl.addEventListener("click", favRecipe);
+listBtnEl.addEventListener("click", loadRecipe);
+heroEl.addEventListener("mouseover", clearLists);
 
-for(let i = 0; i < categoryNames.length; i++) {
-    categoryNames[i].addEventListener("click", filterByCat);
-};
 
 
 // var categoryRecipes = document.getElementsByClassName("category-recipe");

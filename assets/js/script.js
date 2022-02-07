@@ -243,18 +243,18 @@ var favRecipe = function (event) {
         image: imgSrc
     };
     var isIncluded = false;
-    for(var i; i < favoriteRecipes.length; i++) {
+    for(var i = 0; i < favoriteRecipes.length; i++) {
         if(favoriteRecipes[i].name == recipeObj.name) {
             isIncluded = true;
-            console.log("for loop works")
+            
             break;
         }
     }
-    if (recipeObj.name === "Recipe") {
+    if (recipeObj.name === "Recipe Appears Here") {
         return
     } 
     else if (isIncluded == true) {
-        console.log("haha")
+        
         return
     } else {
 

@@ -27,7 +27,7 @@ var favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
 var listBtnEl = document.getElementById("list-btn");
 var favListEl = document.getElementById("fav-list");
 var measureWarningEl = document.querySelector("#neg-measure-warning");
-
+var heroEl = document.getElementById("main");
 
 
 
@@ -196,6 +196,7 @@ var randomBtnHandler = function (event) {
 var loadRecipe = function() {
     favListEl.innerHTML = ""
     favListEl.classList.remove("hide");
+    dropdownEl.classList.add("hide");
     var retrieved = JSON.parse(localStorage.getItem("favoriteRecipes"));
     console.log(retrieved);
 
@@ -214,7 +215,6 @@ var loadRecipe = function() {
             recipeTitleEl.innerHTML = "";
             ingredientsEl.innerHTML = "";
             instructionsEl.innerHTML = "";
-            dropdownEl.classList.add("hide");
             favListEl.classList.add("hide");
             recipeTitleEl.innerHTML = retrieved[i].name;
             instructionsEl.innerHTML = retrieved[i].instruction;
@@ -240,12 +240,29 @@ var favRecipe = function (event) {
         instruction: instructionsEl.innerHTML,
         image: imgSrc
     };
-    // push into favoriteRecipe array
-    favoriteRecipes.push(recipeObj);
-    console.log("list", favoriteRecipes);
-    // call save recipe
-    saveRecipe(favoriteRecipes);
-}
+    var isIncluded = false;
+    for(var i; i < favoriteRecipes.length; i++) {
+        if(favoriteRecipes[i].name == recipeObj.name) {
+            isIncluded = true;
+            console.log("for loop works")
+            break;
+        }
+    }
+    if (recipeObj.name === "Recipe") {
+        return
+    } 
+    else if (isIncluded == true) {
+        console.log("haha")
+        return
+    } else {
+
+        // push into favoriteRecipe array
+        favoriteRecipes.push(recipeObj);
+       // console.log("list", favoriteRecipes);
+        // call save recipe
+        saveRecipe(favoriteRecipes);
+    }   
+};
 
 var getNutritionFacts = function(event) {
     event.preventDefault();
@@ -279,6 +296,11 @@ var getNutritionFacts = function(event) {
     }   
 }
 
+function clearLists() {
+    dropdownEl.classList.add("hide");
+    favListEl.classList.add("hide");
+}
+
 
 //saveBtnEl.addEventListener("click", favRecipe);
 randomRecipeBtnEl.addEventListener("click", randomBtnHandler);
@@ -292,6 +314,7 @@ for(let i = 0; i < categoryNames.length; i++) {
 
 saveBtnEl.addEventListener("click", favRecipe);
 listBtnEl.addEventListener("click", loadRecipe);
+heroEl.addEventListener("mouseover", clearLists);
 
 
 

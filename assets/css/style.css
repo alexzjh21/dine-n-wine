@@ -1,10 +1,9 @@
 .hero {
-    padding: 20px 35px;
-    margin: 10px;
+
     width: 100%;
     margin: 10px auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     background-size: cover;
     background-position: center;
@@ -22,9 +21,8 @@
     color: white;
     padding: 40px;
     border-radius: 10px;
-    
-    
-    
+    text-align: center;
+    font-size: 16px;  
 }
 
 #dine-n-wine {
@@ -85,14 +83,14 @@ h1 {
 }
 
 .pure-button {
-    margin: 15px auto;
+    margin: 10px 15px;
     border-radius: 25px;
     font-family: 'Dosis', sans-serif;
     font-size: 20px;
     color: white;
     background-color: rgb(195, 120, 120);
-
 }
+
 
 .button-font {
     text-align: center;
@@ -196,9 +194,7 @@ footer {
         width: 80%;
     }
 
-    header {
-        justify-content: center;
-    }
+ 
 
 
     
@@ -212,6 +208,16 @@ footer {
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buttons-for-recipes {
+        flex-direction: column;
+        align-items: center;
     }
     
 }
